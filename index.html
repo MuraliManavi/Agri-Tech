@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reformers - Agricultural Innovation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Custom CSS for background and animations */
+        .hero-section {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            height: 100vh;
+            transition: all 0.5s ease;
+        }
+        
+        .fade-in {
+            animation: fadeIn 1.5s;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .menu-overlay {
+            backdrop-filter: blur(5px);
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+        
+        .language-selector:hover .language-dropdown {
+            display: block;
+        }
+    </style>
+</head>
+<body class="font-sans bg-green-50">
+    <!-- Language Selection Floating Button -->
+    <div class="fixed bottom-6 right-6 z-50 language-selector group">
+        <button class="bg-green-600 text-white p-4 rounded-full shadow-lg hover:bg-green-700 transition">
+            <i class="fas fa-language text-2xl"></i>
+        </button>
+        <div class="language-dropdown hidden absolute bottom-full right-0 mb-2 w-48 bg-white rounded-md shadow-lg py-1">
+            <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-green-100" onclick="changeLanguage('en')">English</a>
+            <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-green-100" onclick="changeLanguage('hi')">हिंदी (Hindi)</a>
+            <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-green-100" onclick="changeLanguage('ta')">தமிழ் (Tamil)</a>
+            <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-green-100" onclick="changeLanguage('te')">తెలుగు (Telugu)</a>
+            <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-green-100" onclick="changeLanguage('kn')">ಕನ್ನಡ (Kannada)</a>
+            <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-green-100" onclick="changeLanguage('ml')">മലയാളം (Malayalam)</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero-section text-white flex flex-col justify-center items-center text-center px-4">
+        <div class="fade-in">
+            <h1 class="text-5xl md:text-7xl font-bold mb-6" id="main-title">Reformers</h1>
+            <p class="text-xl md:text-2xl mb-8 max-w-2xl" id="main-subtitle">Transforming Agriculture with Innovation and Technology</p>
+            <a href="#farmers-section" class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 inline-block">
+                <span id="explore-button">Explore for Farmers</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Farmers Section -->
+    <section id="farmers-section" class="py-16 px-4 bg-white">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-green-800 mb-12" id="farmers-title">For Farmers</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover transition duration-300">
+                    <img class="h-48 w-full object-cover" src="https://images.unsplash.com/photo-1605000797499-95a51c5269ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80" alt="Modern Farming Equipment">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-green-800 mb-2" id="machines-title">Modern Machines</h3>
+                        <p class="text-gray-600 mb-4" id="machines-desc">Discover the latest agricultural machinery to boost your productivity.</p>
+                        <button onclick="showMachinesPage()" class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full transition duration-300">
+                            <span id="view-machines">View Machines</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Card 2 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover transition duration-300">
+                    <img class="h-48 w-full object-cover" src="https://images.unsplash.com/photo-1518977676601-b53f82aba655?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Seasonal Crops">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-green-800 mb-2" id="seasonal-title">Seasonal Plants</h3>
+                        <p class="text-gray-600 mb-4" id="seasonal-desc">Learn about the best crops to plant each season for maximum yield.</p>
+                        <button onclick="showMenu('seasonal-plants')" class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full transition duration-300">
+                            <span id="view-seasonal">View Options</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Card 3 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover transition duration-300">
+                    <img class="h-48 w-full object-cover" src= "C:\Users\Mamid\OneDrive\Desktop\Farmer 15.jpeg alt="Farming Techniques">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-green-800 mb-2" id="farming-title">Farming Techniques</h3>
+                        <p class="text-gray-600 mb-4" id="farming-desc">Explore organic and inorganic farming methods to suit your needs.</p>
+                        <button onclick="showMenu('farming-techniques')" class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full transition duration-300">
+                            <span id="view-techniques">Learn More</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Machines Page (Hidden by default) -->
+    <div id="machines-page" class="hidden fixed inset-0 bg-white z-50 overflow-y-auto">
+        <div class="relative min-h-screen">
+            <!-- Menu Button -->
+            <button onclick="showMenu('machines')" class="fixed top-6 right-6 bg-green-600 text-white p-3 rounded-full shadow-lg z-50">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+            
+            <!-- Page Content -->
+            <div class="max-w-6xl mx-auto py-16 px-4">
+                <h2 class="text-3xl md:text-4xl font-bold text-green-800 mb-12" id="machines-page-title">Modern Agricultural Machines</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Machine 1 -->
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover transition duration-300">
+                        <img class="h-48 w-full object-cover" src="https://images.unsplash.com/photo-1586771107445-d3ca888129ce?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Tractor">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold text-green-800 mb-2">Smart Tractor</h3>
+                            <p class="text-gray-600 mb-4">GPS-enabled tractors with automated steering for precision farming.</p>
+                            <button class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full transition duration-300">
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Machine 2 -->
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover transition duration-300">
+                        <img class="h-48 w-full object-cover" src="https://images.unsplash.com/photo-1625244724120-1fd1d34d00f6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Harvester">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold text-green-800 mb-2">Combine Harvester</h3>
+                            <p class="text-gray-600 mb-4">Advanced harvesting machines that can harvest, thresh, and clean crops in one operation.</p>
+                            <button class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full transition duration-300">
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Machine 3 -->
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover transition duration-300">
+                        <img class="h-48 w-full object-cover" src="https://images.unsplash.com/photo-1605000797499-95a51c5269ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80" alt="Seeder">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold text-green-800 mb-2">Precision Seeder</h3>
+                            <p class="text-gray-600 mb-4">Automated seeders that plant seeds at optimal depth and spacing.</p>
+                            <button class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full transition duration-300">
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Machine 4 -->
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover transition duration-300">
+                        <img class="h-48 w-full object-cover" src="https://images.unsplash.com/photo-1583947581924-860bda6a26df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Irrigation">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold text-green-800 mb-2">Smart Irrigation System</h3>
+                            <p class="text-gray-600 mb-4">Automated irrigation systems that optimize water usage based on soil moisture.</p>
+                            <button class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full transition duration-300">
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Machine 5 -->
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover transition duration-300">
+                        <img class="h-48 w-full object-cover" src="https://images.unsplash.com/photo-1560493676-04071d5f361a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Drone">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold text-green-800 mb-2">Agricultural Drones</h3>
+                            <p class="text-gray-600 mb-4">Drones for crop monitoring, spraying, and field analysis.</p>
+                            <button class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full transition duration-300">
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Machine 6 -->
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover transition duration-300">
+                        <img class="h-48 w-full object-cover" src="https://images.unsplash.com/photo-1585011650347-c59c73327e3b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Robot">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold text-green-800 mb-2">Weeding Robots</h3>
+                            <p class="text-gray-600 mb-4">Autonomous robots that identify and remove weeds without chemicals.</p>
+                            <button class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full transition duration-300">
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Menu Overlay (Hidden by default) -->
+    <div id="menu-overlay" class="hidden fixed inset-0 bg-black bg-opacity-70 z-50 menu-overlay">
+        <div class="flex h-full">
+            <div class="w-64 bg-white h-full overflow-y-auto">
+                <div class="p-4 border-b border-gray-200">
+                    <h3 class="text-xl font-bold text-green-800" id="menu-title">Menu</h3>
+                </div>
+                <ul class="py-2" id="menu-items">
+                    <!-- Menu items will be populated by JavaScript -->
+                </ul>
+            </div>
+            <div class="flex-1" onclick="hideMenu()"></div>
+        </div>
+    </div>
+
+    <script>
+        // Language translations
+        const translations = {
+            en: {
+                "main-title": "Reformers",
+                "main-subtitle": "Transforming Agriculture with Innovation and Technology",
+                "explore-button": "Explore for Farmers",
+                "farmers-title": "For Farmers",
+                "machines-title": "Modern Machines",
+                "machines-desc": "Discover the latest agricultural machinery to boost your productivity.",
+                "view-machines": "View Machines",
+                "seasonal-title": "Seasonal Plants",
+                "seasonal-desc": "Learn about the best crops to plant each season for maximum yield.",
+                "view-seasonal": "View Options",
+                "farming-title": "Farming Techniques",
+                "farming-desc": "Explore organic and inorganic farming methods to suit your needs.",
+                "view-techniques": "Learn More",
+                "machines-page-title": "Modern Agricultural Machines",
+                "menu-title": "Menu",
+                "back-button": "Back"
+            },
+            hi: {
+                "main-title": "रिफॉर्मर्स",
+                "main-subtitle": "नवाचार और प्रौद्योगिकी के साथ कृषि को बदलना",
+                "explore-button": "किसानों के लिए एक्सप्लोर करें",
+                "farmers-title": "किसानों के लिए",
+                "machines-title": "आधुनिक मशीनें",
+                "machines-desc": "अपनी उत्पादकता बढ़ाने के लिए नवीनतम कृषि मशीनरी की खोज करें।",
+                "view-machines": "मशीनें देखें",
+                "seasonal-title": "मौसमी पौधे",
+                "seasonal-desc": "अधिकतम उपज के लिए प्रत्येक मौसम में लगाने के लिए सर्वोत्तम फसलों के बारे में जानें।",
+                "view-seasonal": "विकल्प देखें",
+                "farming-title": "कृषि तकनीक",
+                "farming-desc": "अपनी आवश्यकताओं के अनुरूप जैविक और अजैविक खेती के तरीकों का पता लगाएं।",
+                "view-techniques": "अधिक जानें",
+                "machines-page-title": "आधुनिक कृषि मशीनें",
+                "menu-title": "मेनू",
+                "back-button": "वापस"
+            },
+            ta: {
+                "main-title": "ரிஃபார்மர்ஸ்",
+                "main-subtitle": "புதுமை மற்றும் தொழில்நுட்பத்துடன் விவசாயத்தை மாற்றுதல்",
+                "explore-button": "விவசாயிகளுக்காக ஆராயவும்",
+                "farmers-title": "விவசாயிகளுக்காக",
+                "machines-title": "நவீன இயந்திரங்கள்",
+                "machines-desc": "உங்கள் உற்பத்தித்திறனை அதிகரிக்க சமீபத்திய விவசாய இயந்திரங்களைக் கண்டறியவும்.",
+                "view-machines": "இயந்திரங்களைக் காண்க",
+                "seasonal-title": "பருவகால தாவரங்கள்",
+                "seasonal-desc": "அதிகபட்ச விளைச்சலுக்கு ஒவ்வொரு பருவத்திலும் நடவு செய்ய சிறந்த பயிர்களைப் பற்றி அறிக.",
+                "view-seasonal": "விருப்பங்களைக் காண்க",
+                "farming-title": "விவசாய நுட்பங்கள்",
+                "farming-desc": "உங்கள் தேவைகளுக்கு ஏற்ப கரிம மற்றும் கனிம விவசாய முறைகளை ஆராயவும்.",
+                "view-techniques": "மேலும் அறிக",
+                "machines-page-title": "நவீன விவசாய இயந்திரங்கள்",
+                "menu-title": "பட்டியல்",
+                "back-button": "மீண்டும்"
+            },
+            te: {
+                "main-title": "రిఫార్మర్స్",
+                "main-subtitle": "నూతన ఆవిష్కరణలు మరియు సాంకేతికతతో వ్యవసాయాన్ని మార్చడం",
+                "explore-button": "రైతుల కోసం అన్వేషించండి",
+                "farmers-title": "రైతుల కోసం",
+                "machines-title": "ఆధునిక యంత్రాలు",
+                "machines-desc": "మీ ఉత్పాదకతను పెంచడానికి తాజా వ్యవసాయ యంత్రాలను కనుగొనండి.",
+                "view-machines": "యంత్రాలను వీక్షించండి",
+                "seasonal-title": "ఋతుపవన మొక్కలు",
+                "seasonal-desc": "గరిష్ట దిగుబడి కోసం ప్రతి సీజన్లో నాటడానికి ఉత్తమ పంటల గురించి తెలుసుకోండి.",
+                "view-seasonal": "ఎంపికలను వీక్షించండి",
+                "farming-title": "వ్యవసాయ పద్ధతులు",
+                "farming-desc": "మీ అవసరాలకు అనుగుణంగా సేంద్రీయ మరియు అకర్బన వ్యవసాయ పద్ధతులను అన్వేషించండి.",
+                "view-techniques": "మరింత తెలుసుకోండి",
+                "machines-page-title": "ఆధునిక వ్యవసాయ యంత్రాలు",
+                "menu-title": "మెను",
+                "back-button": "వెనుకకు"
+            },
+            kn: {
+                "main-title": "ರಿಫಾರ್ಮರ್ಸ್",
+                "main-subtitle": "ನಾವೀನ್ಯತೆ ಮತ್ತು ತಂತ್ರಜ್ಞಾನದೊಂದಿಗೆ ಕೃಷಿಯನ್ನು ಪರಿವರ್ತಿಸುವುದು",
+                "explore-button": "ರೈತರಿಗಾಗಿ ಅನ್ವೇಷಿಸಿ",
+                "farmers-title": "ರೈತರಿಗಾಗಿ",
+                "machines-title": "ಆಧುನಿಕ ಯಂತ್ರಗಳು",
+                "machines-desc": "ನಿಮ್ಮ ಉತ್ಪಾದಕತೆಯನ್ನು ಹೆಚ್ಚಿಸಲು ಇತ್ತೀಚಿನ ಕೃಷಿ ಯಂತ್ರಗಳನ್ನು ಕಂಡುಹಿಡಿಯಿರಿ.",
+                "view-machines": "ಯಂತ್ರಗಳನ್ನು ವೀಕ್ಷಿಸಿ",
+                "seasonal-title": "ಋತುವಾರು ಸಸ್ಯಗಳು",
+                "seasonal-desc": "ಗರಿಷ್ಠ ಇಳುವರಿಗಾಗಿ ಪ್ರತಿ ಋತುವಿನಲ್ಲಿ ನೆಡಲು ಉತ್ತಮ ಬೆಳೆಗಳ ಬಗ್ಗೆ ತಿಳಿಯಿರಿ.",
+                "view-seasonal": "ಆಯ್ಕೆಗಳನ್ನು ವೀಕ್ಷಿಸಿ",
+                "farming-title": "ಕೃಷಿ ತಂತ್ರಗಳು",
+                "farming-desc": "ನಿಮ್ಮ ಅಗತ್ಯಗಳಿಗೆ ಅನುಗುಣವಾಗಿ ಸಾವಯವ ಮತ್ತು ಅಜೈವಿಕ ಕೃಷಿ ವಿಧಾನಗಳನ್ನು ಅನ್ವೇಷಿಸಿ.",
+                "view-techniques": "ಹೆಚ್ಚು ತಿಳಿಯಿರಿ",
+                "machines-page-title": "ಆಧುನಿಕ ಕೃಷಿ ಯಂತ್ರಗಳು",
+                "menu-title": "ಮೆನು",
+                "back-button": "ಹಿಂದೆ"
+            },
+            ml: {
+                "main-title": "റിഫോമേഴ്സ്",
+                "main-subtitle": "നൂതനാത്മകതയും സാങ്കേതികവിദ്യയും ഉപയോഗിച്ച് കാർഷിക മേഖലയെ പരിവർത്തനം ചെയ്യുന്നു",
+                "explore-button": "കർഷകർക്കായി പര്യവേക്ഷണം ചെയ്യുക",
+                "farmers-title": "കർഷകർക്കായി",
+                "machines-title": "ആധുനിക യന്ത്രങ്ങൾ",
+                "machines-desc": "നിങ്ങളുടെ ഉൽപാദനക്ഷമത വർദ്ധിപ്പിക്കാൻ ഏറ്റവും പുതിയ കാർഷിക യന്ത്രങ്ങൾ കണ്ടെത്തുക.",
+                "view-machines": "യന്ത്രങ്ങൾ കാണുക",
+                "seasonal-title": "സീസണൽ സസ്യങ്ങൾ",
+                "seasonal-desc": "പരമാവധി വിളവ് ലഭിക്കാൻ ഓരോ സീസണിലും നടാനുള്ള മികച്ച വിളകളെക്കുറിച്ച് അറിയുക.",
+                "view-seasonal": "ഓപ്ഷനുകൾ കാണുക",
+                "farming-title": "കൃഷി രീതികൾ",
+                "farming-desc": "നിങ്ങളുടെ ആവശ്യങ്ങൾക്ക് അനുയോജ്യമായ ജൈവ, അജൈവ കൃഷി രീതികൾ പര്യവേക്ഷണം ചെയ്യുക.",
+                "view-techniques": "കൂടുതൽ അറിയുക",
+                "machines-page-title": "ആധുനിക കാർഷിക യന്ത്രങ്ങൾ",
+                "menu-title": "മെനു",
+                "back-button": "പുറകിലേക്ക്"
+            }
+        };
+
+        // Current language
+        let currentLanguage = 'en';
+
+        // Change language function
+        function changeLanguage(lang) {
+            currentLanguage = lang;
+            updateTranslations();
+        }
+
+        // Update all translations on the page
+        function updateTranslations() {
+            const elements = document.querySelectorAll('[id]');
+            elements.forEach(element => {
+                const id = element.id;
+                if (translations[currentLanguage] && translations[currentLanguage][id]) {
+                    element.textContent = translations[currentLanguage][id];
+                }
+            });
+        }
+
+        // Show machines page
+        function showMachinesPage() {
+            document.getElementById('machines-page').classList.remove('hidden');
+        }
+
+        // Hide machines page
+        function hideMachinesPage() {
+            document.getElementById('machines-page').classList.add('hidden');
+        }
+
+        // Show menu
+        function showMenu(type) {
+            const menuOverlay = document.getElementById('menu-overlay');
+            const menuItems = document.getElementById('menu-items');
+            
+            menuItems.innerHTML = '';
+            
+            if (type === 'machines') {
+                menuItems.innerHTML = `
+                    <li>
+                        <a href="#" class="block px-4 py-3 text-gray-800 hover:bg-green-100 font-semibold" onclick="hideMenu()">
+                            <i class="fas fa-arrow-left mr-2"></i> ${translations[currentLanguage]['back-button']}
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="block px-4 py-3 text-gray-800 hover:bg-green-100 border-b border-gray-200">
+                            <i class="fas fa-tractor mr-2"></i> Agricultural Machinery
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="block px-4 py-3 text-gray-800 hover:bg-green-100 border-b border-gray-200">
+                            <i class="fas fa-seedling mr-2"></i> Seasonal Plants
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="block px-4 py-3 text-gray-800 hover:bg-green-100 border-b border-gray-200">
+                            <i class="fas fa-dna mr-2"></i> Types of Seeds
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="block px-4 py-3 text-gray-800 hover:bg-green-100 border-b border-gray-200">
+                            <i class="fas fa-leaf mr-2"></i> Organic Farming
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="block px-4 py-3 text-gray-800 hover:bg-green-100">
+                            <i class="fas fa-flask mr-2"></i> Inorganic Farming
+                        </a>
+                    </li>
+                `;
+            } else if (type === 'seasonal-plants') {
+                menuItems.innerHTML = `
+                    <li>
+                        <a href="#" class="block px-4 py-3 text-gray-800 hover:bg-green-100 font-semibold" onclick="hideMenu()">
+                            <i class="fas fa-arrow-left mr-2"></i> ${translations[currentLanguage]['back-button']}
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="block px-4 py-3 text-gray-800 hover:bg-green-100 border-b border-gray-200">
+                            <i class="fas fa-sun mr-2"></i> Summer Crops
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="block px-4 py-3 text-gray-800 hover:bg-green-100 border-b border-gray-200">
+                            <i class="fas fa-cloud-rain mr-2"></i> Monsoon Crops
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="block px-4 py-3 text-gray-800 hover:bg-green-100 border-b border-gray-200">
+                            <i class="fas fa-snowflake mr-2"></i> Winter Crops
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="block px-4 py-3 text-gray-800 hover:bg-green-100">
+                            <i class="fas fa-calendar-alt mr-2"></i> Year-round Crops
+                        </a>
+                    </li>
+                `;
+            } else if (type === 'farming-techniques') {
+                menuItems.innerHTML = `
+                    <li>
+                        <a href="#" class="block px-4 py-3 text-gray-800 hover:bg-green-100 font-semibold" onclick="hideMenu()">
+                            <i class="fas fa-arrow-left mr-2"></i> ${translations[currentLanguage]['back-button']}
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="block px-4 py-3 text-gray-800 hover:bg-green-100 border-b border-gray-200">
+                            <i class="fas fa-recycle mr-2"></i> Sustainable Farming
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="block px-4 py-3 text-gray-800 hover:bg-green-100 border-b border-gray-200">
+                            <i class="fas fa-water mr-2"></i> Drip Irrigation
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="block px-4 py-3 text-gray-800 hover:bg-green-100 border-b border-gray-200">
+                            <i class="fas fa-spa mr-2"></i> Organic Farming
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="block px-4 py-3 text-gray-800 hover:bg-green-100">
+                            <i class="fas fa-atom mr-2"></i> Hydroponics
+                        </a>
+                    </li>
+                `;
+            }
+            
+            menuOverlay.classList.remove('hidden');
+        }
+
+        // Hide menu
+        function hideMenu() {
+            document.getElementById('menu-overlay').classList.add('hidden');
+        }
+
+        // Close machines page when clicking outside content
+        document.getElementById('machines-page').addEventListener('click', function(e) {
+            if (e.target === this) {
+                hideMachinesPage();
+            }
+        });
+
+        // Initialize translations
+        updateTranslations();
+    </script>
+</body>
+</html>
